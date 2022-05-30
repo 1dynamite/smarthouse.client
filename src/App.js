@@ -1,24 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { red, amber } from "@mui/material/colors";
+import Main from "./pages/welcome/main";
+import Footer from "./pages/_components/footer";
+import GlobalStyles from "@mui/material/GlobalStyles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[400],
+    },
+    secondary: {
+      main: amber[500],
+    },
+  },
+});
+
+const styles = {
+  "&::-webkit-scrollbar": {
+    width: "5px",
+    height: "5px",
+  },
+
+  /* Track */
+  "&::-webkit-scrollbar-track": {
+    boxShadow: "inset 0 0 5px grey",
+    borderRadius: "10px",
+  },
+
+  /* Handle */
+  "&::-webkit-scrollbar-thumb": {
+    background: theme.palette.primary.main,
+    borderRadius: "10px",
+  },
+
+  /* Handle on hover */
+  "&::-webkit-scrollbar-thumb:hover": {
+    background: theme.palette.primary.dark,
+  },
+};
+
+const welcomePage = (
+  <div>
+    <Main></Main>
+    <Footer />
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles styles={{ div: styles, body: styles }} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={welcomePage} />
+          <Route
+            path="/garderobnie-napolnenie/:id"
+            element={<div>Papapapapa</div>}
+          />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
