@@ -13,6 +13,8 @@ function DialogImage({ src, left, display, width }) {
       display,
       boxShadow: "3px 7px 10px grey",
       borderRadius: theme.shape.borderRadius,
+      objectFit: "cover",
+      objectPosition: "center",
     });
 
   return <img css={imgStyles} alt="something" src={src} />;

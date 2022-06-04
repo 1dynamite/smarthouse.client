@@ -13,7 +13,7 @@ function WelcomeScreen() {
       height: "100vh",
       width: "100%",
       marginBottom: theme.spacing(6),
-      borderBottom: `1px solid ${theme.palette.grey["50"]}`,
+      boxShadow: theme.shadows[4],
     });
 
   const img = (theme) =>
@@ -23,6 +23,7 @@ function WelcomeScreen() {
       zIndex: "-1",
       position: "absolute",
       transition: "0.3s",
+      objectFit: "cover",
     });
 
   useEffect(() => {

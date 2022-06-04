@@ -6,6 +6,7 @@ function WindowOne({ src, mover, mout }) {
     css({
       borderRadius: theme.shape.borderRadius,
       border: `1px solid ${theme.palette.grey["400"]}`,
+      objectFit: "cover",
     });
 
   const onMouseOver = (e) => {

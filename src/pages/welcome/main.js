@@ -5,6 +5,7 @@ import Title from "../_components/title";
 import Navbar from "./components/navbar/navbar";
 import WelcomeScreen from "./components/welcomescreen/welcomescreen";
 import Windows from "./components/windows/windows";
+import getWindows from "./services/getWindows";
 
 import windowsData from "./components/windows/services/windowsData";
 
@@ -20,7 +21,9 @@ function Main() {
     });
 
   useEffect(() => {
-    setWindowsDataMany(windowsData.windowsMany);
+    getWindows().then((data) => {
+      setWindowsDataMany(data);
+    });
   }, []);
 
   return (
@@ -28,7 +31,7 @@ function Main() {
       <Navbar></Navbar>
       <WelcomeScreen></WelcomeScreen>
       <div css={windowsContainerStyles}>
-        <Title />
+        <Title text={"Гардеробные наполнение"} />
         {windowsDataMany ? (
           <>
             <Windows myData={windowsDataMany[0]}></Windows>

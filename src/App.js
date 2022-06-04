@@ -4,6 +4,8 @@ import Main from "./pages/welcome/main";
 import Footer from "./pages/_components/footer";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Details from "./pages/details/details";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const theme = createTheme({
   palette: {
@@ -50,14 +52,12 @@ const welcomePage = (
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <GlobalStyles styles={{ div: styles, body: styles }} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={welcomePage} />
-          <Route
-            path="/garderobnie-napolnenie/:id"
-            element={<div>Papapapapa</div>}
-          />
+          <Route path="/garderobnie-napolnenie/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

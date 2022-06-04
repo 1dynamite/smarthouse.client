@@ -6,7 +6,7 @@ import DialogImage from "./components/dialogImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const dialogImgWidth = 500;
+const dialogImgWidth = 600;
 
 function Windows(props) {
   const [dialogImgDisplay, setDialogImgDisplay] = useState("none");
@@ -42,6 +42,7 @@ function Windows(props) {
   const facadeImgStyles = (theme) =>
     css({
       width: "35%",
+      objectFit: "cover",
     });
 
   const facadeTextStyles = (theme) =>
@@ -111,14 +112,14 @@ function Windows(props) {
           <Typography variant="body1" css={desStyles}>
             {props.myData.des}
           </Typography>
-          <Button variant="contained" css={buttonStyles}>
-            <Link
-              to={`garderobnie-napolnenie/${props.myData._id}`}
-              css={linkStyles}
-            >
+          <Link
+            to={`garderobnie-napolnenie/${props.myData._id}`}
+            css={linkStyles}
+          >
+            <Button variant="contained" css={buttonStyles}>
               Learn more
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
       <div css={[warehouseStyles]}>
