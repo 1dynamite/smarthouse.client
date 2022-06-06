@@ -6,6 +6,7 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./pages/details/details";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Typography } from "@mui/material";
 
 const theme = createTheme({
   palette: {

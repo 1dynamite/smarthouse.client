@@ -7,11 +7,20 @@ function Title({ text }) {
     css({
       display: "flex",
       justifyContent: "center",
+      marginTop: theme.spacing(9),
+      marginBottom: theme.spacing(9),
+    });
+
+  const textStyles = (theme) =>
+    css({
+      textAlign: "center",
     });
 
   return (
     <div css={rootStyles}>
-      <Typography variant="h4">{text}</Typography>
+      <Typography variant="h4" css={textStyles}>
+        {text}
+      </Typography>
     </div>
   );
 }

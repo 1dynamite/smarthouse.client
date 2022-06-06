@@ -5,6 +5,7 @@ import WindowOne from "./components/windowOne";
 import DialogImage from "./components/dialogImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 const dialogImgWidth = 600;
 
@@ -17,17 +18,14 @@ function Windows(props) {
     css({
       display: "flex",
       flexDirection: "column",
-      borderRadius: "25px 80px 25px 25px",
+      borderRadius: "25px",
       width: "70%",
       backgroundColor: theme.palette.grey["50"],
       boxShadow: theme.shadows[12],
       overflow: "hidden",
     });
 
-  const facadeStyles = (theme) =>
-    css({
-      display: "flex",
-    });
+  const facadeStyles = (theme) => css({});
 
   const warehouseStyles = (theme) =>
     css({
@@ -41,23 +39,39 @@ function Windows(props) {
 
   const facadeImgStyles = (theme) =>
     css({
-      width: "35%",
       objectFit: "cover",
+      width: "100%",
     });
 
   const facadeTextStyles = (theme) =>
     css({
       display: "flex",
       flexDirection: "column",
-      flexGrow: "1",
+      width: "100%",
       gap: theme.spacing(2),
       padding: `${theme.spacing(2)} ${theme.spacing(4)}`,
       borderLeft: `1px solid ${theme.palette.grey["100"]}`,
     });
 
-  const titleStyles = (theme) => css({});
+  const titleStyles = (theme) =>
+    css({
+      [theme.breakpoints.down("md")]: {
+        textAlign: "center",
+      },
+      [theme.breakpoints.up("md")]: {
+        textAlign: "start",
+      },
+    });
 
-  const desStyles = (theme) => css({});
+  const desStyles = (theme) =>
+    css({
+      [theme.breakpoints.down("md")]: {
+        textAlign: "center",
+      },
+      [theme.breakpoints.up("md")]: {
+        textAlign: "start",
+      },
+    });
 
   const buttonStyles = (theme) =>
     css({
@@ -73,6 +87,20 @@ function Windows(props) {
     css({
       color: "inherit",
       textDecoration: "none",
+      width: "max-content",
+    });
+
+  const linkContainerStyles = (theme) =>
+    css({
+      display: "flex",
+      [theme.breakpoints.down("md")]: {
+        justifyContent: "center",
+      },
+      [theme.breakpoints.up("md")]: {
+        justifyContent: "start",
+      },
+
+      marginBottom: "1rem",
     });
 
   const mover = (src, e) => {
@@ -96,32 +124,38 @@ function Windows(props) {
   };
 
   return (
-    <div css={rootStyles} className="scroll_style">
-      <div css={facadeStyles}>
-        <img
-          css={facadeImgStyles}
-          alt="something"
-          src={props.myData.img}
-          height={220}
-        />
-        <div css={facadeTextStyles}>
-          <Typography variant="h6" css={titleStyles}>
-            {props.myData.title.firstPart}{" "}
-            <span css={woodproStyles}>{props.myData.title.secondPart}</span>
-          </Typography>
-          <Typography variant="body1" css={desStyles}>
-            {props.myData.des}
-          </Typography>
-          <Link
-            to={`garderobnie-napolnenie/${props.myData._id}`}
-            css={linkStyles}
-          >
-            <Button variant="contained" css={buttonStyles}>
-              Learn more
-            </Button>
-          </Link>
-        </div>
-      </div>
+    <div css={rootStyles}>
+      <Grid container css={facadeStyles}>
+        <Grid item xs={12} sm={6} md={4}>
+          <img
+            css={facadeImgStyles}
+            alt="something"
+            src={props.myData.img}
+            height={220}
+          />
+        </Grid>
+        <Grid xs={12} sm={6} item md={8}>
+          <div css={facadeTextStyles}>
+            <Typography variant="h6" css={titleStyles}>
+              {props.myData.title.firstPart}{" "}
+              <span css={woodproStyles}>{props.myData.title.secondPart}</span>
+            </Typography>
+            <Typography variant="body1" css={desStyles}>
+              {props.myData.des}
+            </Typography>
+            <div css={linkContainerStyles}>
+              <Link
+                to={`garderobnie-napolnenie/${props.myData._id}`}
+                css={linkStyles}
+              >
+                <Button variant="contained" css={buttonStyles}>
+                  Learn more
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </Grid>
+      </Grid>
       <div css={[warehouseStyles]}>
         {props.myData.windows.map((el, index) => (
           <WindowOne key={index} src={el} mover={mover} mout={mout} />

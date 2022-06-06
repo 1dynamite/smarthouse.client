@@ -1,5 +1,5 @@
 export default async function getWindows() {
-  const response = await fetch("http://localhost:3001/api/windows", {
+  const response = await fetch("http://192.168.0.166:3001/api/windows", {
     method: "GET",
   });
 

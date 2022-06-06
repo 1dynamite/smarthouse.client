@@ -6,8 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import WelcomeScreen from "./components/welcomescreen/welcomescreen";
 import Windows from "./components/windows/windows";
 import getWindows from "./services/getWindows";
-
-import windowsData from "./components/windows/services/windowsData";
+import OnDemand from "./components/ondemand/ondemand";
 
 function Main() {
   const [windowsDataMany, setWindowsDataMany] = useState(null);
@@ -30,8 +29,8 @@ function Main() {
     <main>
       <Navbar></Navbar>
       <WelcomeScreen></WelcomeScreen>
+      <Title text={"Гардеробные наполнение"} />
       <div css={windowsContainerStyles}>
-        <Title text={"Гардеробные наполнение"} />
         {windowsDataMany ? (
           <>
             <Windows myData={windowsDataMany[0]}></Windows>
@@ -41,6 +40,8 @@ function Main() {
           ""
         )}
       </div>
+      <Title text={"Индивидуально под заказ изготавливаем "} />
+      <OnDemand />
     </main>
   );
 }

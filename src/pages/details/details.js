@@ -12,7 +12,7 @@ import Dialog from "./components/components/dialog";
 
 function Details() {
   let params = useParams();
-  const [detailsData, setDetailsData] = useState({ cards: [] });
+  const [detailsData, setDetailsData] = useState({ title: {}, cards: [] });
 
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -60,8 +60,8 @@ function Details() {
       />
       <NavbarLight />
       <Typography variant="h4" css={titleStyles}>
-        Гардеробные наполнение
-        <span css={woodproStyles}> WOODPRO</span>
+        {detailsData?.title.firstPart}
+        <span css={woodproStyles}> {detailsData?.title.secondPart}</span>
       </Typography>
       <Grid
         container
