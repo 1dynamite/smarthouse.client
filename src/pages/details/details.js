@@ -81,7 +81,7 @@ function Details() {
         }}
       >
         <ArrowBackIosNewIcon fontSize="small" />
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Typography style={{ fontSize: "1.3rem" }}>
             <a href="/" css={goBackStyles}>
               Назад
