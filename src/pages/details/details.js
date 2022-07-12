@@ -2,13 +2,15 @@
 import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
 import getDetails from "./services/getDetails";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavbarLight from "./components/navbar/navbar";
 import Footer from "../_components/footer";
 import { css } from "@emotion/react";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import Item from "./components/item";
 import Dialog from "./components/components/dialog";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { blue } from "@mui/material/colors";
 
 function Details() {
   let params = useParams();
@@ -50,6 +52,14 @@ function Details() {
     };
   };
 
+  const goBackStyles = (theme) =>
+    css({
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "underline",
+      },
+    });
+
   return (
     <div css={rootStyles}>
       <Dialog
@@ -58,7 +68,29 @@ function Details() {
         setOpen={setOpen}
         setSelectedValue={setSelectedValue}
       />
-      <NavbarLight />
+      {/*  <NavbarLight /> */}
+      <div
+        style={{
+          display: "flex",
+          gap: "1rem",
+          alignItems: "center",
+          marginLeft: "3rem",
+          marginBottom: "2rem",
+          color: blue[900],
+          marginTop: "2rem",
+        }}
+      >
+        <ArrowBackIosNewIcon fontSize="small" />
+        <Link to="/">
+          <Typography style={{ fontSize: "1.3rem" }}>
+            <a href="/" css={goBackStyles}>
+              Назад
+            </a>
+          </Typography>
+        </Link>
+      </div>
+      <Divider style={{ marginBottom: "1.5rem" }} />
+
       <Typography variant="h4" css={titleStyles}>
         {detailsData?.title.firstPart}
         <span css={woodproStyles}> {detailsData?.title.secondPart}</span>

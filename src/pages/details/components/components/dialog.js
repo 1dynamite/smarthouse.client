@@ -13,7 +13,13 @@ function SimpleDialog(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} open={open} css={rootStyles} maxWidth={"md"}>
+    <Dialog
+      transitionDuration={{ exit: 0 }}
+      onClose={handleClose}
+      open={open}
+      css={rootStyles}
+      maxWidth={"md"}
+    >
       <img
         alt="dialogImage"
         src={selectedValue}

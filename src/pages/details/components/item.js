@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import SellIcon from "@mui/icons-material/Sell";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 import CardMedia from "./components/CardMedia";
+import { Tooltip } from "@mui/material";
 
 export default function Item(props) {
   return (
@@ -45,12 +46,25 @@ export default function Item(props) {
             marginTop: "0.3rem",
           }}
         >
-          <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.3rem",
+              alignItems: "flex-start",
+              marginRight: "1rem",
+            }}
+          >
             <SellIcon fontSize="1rem" />
             <Typography>Цена:</Typography>
           </div>
-
-          <Typography>{props.value.size1}</Typography>
+          <Typography
+            style={{
+              overflow: "auto",
+              textAlign: "right",
+            }}
+          >
+            {props.value.size1}
+          </Typography>
         </div>
 
         {props.value.size2 ? (
@@ -62,13 +76,56 @@ export default function Item(props) {
             }}
           >
             <div
-              style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
+              style={{
+                display: "flex",
+                gap: "0.3rem",
+                alignItems: "center",
+                marginRight: "3rem",
+              }}
             >
               {/* <SellIcon fontSize="1rem" />
               <Typography>Цена:</Typography> */}
             </div>
+            <Typography
+              style={{
+                overflow: "auto",
+                textAlign: "right",
+              }}
+            >
+              {props.value.size2}
+            </Typography>
+          </div>
+        ) : (
+          <></>
+        )}
 
-            <Typography>{props.value.size2}</Typography>
+        {props.value.size3 ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "0.3rem",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                gap: "0.3rem",
+                alignItems: "center",
+                marginRight: "3rem",
+              }}
+            >
+              {/* <SellIcon fontSize="1rem" />
+              <Typography>Цена:</Typography> */}
+            </div>
+            <Typography
+              style={{
+                overflow: "auto",
+                textAlign: "right",
+              }}
+            >
+              {props.value.size3}
+            </Typography>
           </div>
         ) : (
           <></>

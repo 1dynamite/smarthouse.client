@@ -7,6 +7,8 @@ import WelcomeScreen from "./components/welcomescreen/welcomescreen";
 import Windows from "./components/windows/windows";
 import getWindows from "./services/getWindows";
 import OnDemand from "./components/ondemand/ondemand";
+import MySwiper from "./components/windows/components/mySwiper";
+import NavStrips from "../_components/nav-strips";
 
 function Main() {
   const [windowsDataMany, setWindowsDataMany] = useState(null);
@@ -27,6 +29,7 @@ function Main() {
 
   return (
     <main>
+      <NavStrips />
       <Navbar></Navbar>
       <WelcomeScreen></WelcomeScreen>
       <Title text={"Гардеробные наполнение"} />

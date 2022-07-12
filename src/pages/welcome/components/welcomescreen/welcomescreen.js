@@ -79,7 +79,8 @@ function WelcomeScreen() {
       }
     };
 
-    myTimeout = setTimeout(myTimer, 30000);
+    if (document.documentElement.clientWidth > 600)
+      myTimeout = setTimeout(myTimer, 6000);
 
     return function cleanUp() {
       clearTimeout(myTimeout);

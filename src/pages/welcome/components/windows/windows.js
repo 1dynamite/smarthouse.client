@@ -6,13 +6,16 @@ import DialogImage from "./components/dialogImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
+import MySwiper from "./components/mySwiper";
 
-const dialogImgWidth = 600;
+const dialogImgWidth = (document.documentElement.clientWidth - 80) / 2;
+const isMobile = document.documentElement.clientWidth < 600;
 
 function Windows(props) {
   const [dialogImgDisplay, setDialogImgDisplay] = useState("none");
   const [dialogImagePos, setDialogImagePos] = useState(0);
   const [dialogImgSrc, setDialogImgSrc] = useState("");
+  const [swiperIndex, setSwiperIndex] = useState(null);
 
   const rootStyles = (theme) =>
     css({
@@ -123,6 +126,10 @@ function Windows(props) {
     setDialogImgDisplay("none");
   };
 
+  const onClickWindowOne = (index) => {
+    setSwiperIndex(index);
+  };
+
   return (
     <div css={rootStyles}>
       <Grid container css={facadeStyles}>
@@ -158,15 +165,32 @@ function Windows(props) {
       </Grid>
       <div css={[warehouseStyles]}>
         {props.myData.windows.map((el, index) => (
-          <WindowOne key={index} src={el} mover={mover} mout={mout} />
+          <WindowOne
+            key={index}
+            index={index}
+            onClick={onClickWindowOne}
+            src={el}
+            mover={isMobile ? () => {} : mover}
+            mout={isMobile ? () => {} : mout}
+          />
         ))}
       </div>
-      <DialogImage
-        src={dialogImgSrc}
-        left={dialogImagePos}
-        display={dialogImgDisplay}
-        width={dialogImgWidth}
-      />
+      {isMobile ? (
+        <MySwiper
+          windows={props.myData.windows}
+          currentIndex={swiperIndex}
+          onCloseSwiper={() => {
+            setSwiperIndex(null);
+          }}
+        ></MySwiper>
+      ) : (
+        <DialogImage
+          src={dialogImgSrc}
+          left={dialogImagePos}
+          display={dialogImgDisplay}
+          width={dialogImgWidth}
+        />
+      )}
     </div>
   );
 }

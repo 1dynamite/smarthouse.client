@@ -8,14 +8,14 @@ function NavbarLight() {
     css({
       boxSizing: "border-box",
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "center",
       alignItems: "center",
       padding: `${theme.spacing(3)} ${theme.spacing(5)}`,
       backgroundColor: "rgba(255,255,255,0.8)",
       backdropFilter: "blur(10px)",
       borderBottom: `1px solid ${theme.palette.grey["200"]}`,
       width: "100%",
-      marginBottom: "3rem",
+      marginBottom: "2rem",
     });
 
   const navLinksStyles = (theme) =>
@@ -36,14 +36,14 @@ function NavbarLight() {
   return (
     <nav css={navStyles} id="navEl">
       <Smarthouse variant={"light"} />
-      <div css={rightHandStyles}>
+      {/* <div css={rightHandStyles}>
         <Button variant="text" css={navLinksStyles}>
           Browse
         </Button>
         <Button variant="text" css={navLinksStyles}>
-          Contacts
+          Find us
         </Button>
-      </div>
+      </div> */}
     </nav>
   );
 }

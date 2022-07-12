@@ -4,8 +4,11 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import Smarthouse from "./components/smarthouse/smarthouse";
 
+/* const isMobile = document.documentElement.clientWidth < 600; */
+const welcomeHeight = window.innerHeight;
+
 const calcVariant = (height) => {
-  if (window.scrollY < window.innerHeight - height) return "default";
+  if (window.scrollY < welcomeHeight - height) return "default";
   return "light";
 };
 
@@ -19,7 +22,7 @@ function Navbar() {
     css({
       boxSizing: "border-box",
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "center",
       alignItems: "center",
       padding: `${theme.spacing(3)} ${theme.spacing(5)}`,
       backgroundColor:
@@ -81,14 +84,14 @@ function Navbar() {
   return (
     <nav css={navStyles} id="navEl">
       <Smarthouse variant={variant} />
-      <div css={rightHandStyles}>
+      {/* <div css={rightHandStyles}>
         <Button variant="text" css={navLinksStyles}>
           Browse
         </Button>
-        <Button variant="text" css={navLinksStyles}>
-          Contacts
+          <Button variant="text" css={navLinksStyles}>
+          Find us
         </Button>
-      </div>
+      </div> */}
     </nav>
   );
 }

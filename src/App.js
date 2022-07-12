@@ -6,12 +6,12 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./pages/details/details";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Typography } from "@mui/material";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: red[400],
+      light: red[300],
     },
     secondary: {
       main: amber[500],

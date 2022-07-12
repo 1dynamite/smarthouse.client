@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-function WindowOne({ src, mover, mout }) {
+function WindowOne({ src, mover, mout, onClick, index }) {
   const imgStyles = (theme) =>
     css({
       borderRadius: theme.shape.borderRadius,
@@ -17,6 +17,10 @@ function WindowOne({ src, mover, mout }) {
     mout();
   };
 
+  const onClickMe = () => {
+    onClick(index);
+  };
+
   return (
     <img
       css={imgStyles}
@@ -26,6 +30,7 @@ function WindowOne({ src, mover, mout }) {
       width={80}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
+      onClick={onClickMe}
     />
   );
 }

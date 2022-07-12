@@ -4,6 +4,8 @@ import CardMediaMui from "@mui/material/CardMedia";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { css } from "@emotion/react";
 
+const isMobile = document.documentElement.clientWidth < 600;
+
 export default function CardMedia(props) {
   const [zoomIconSize, setzoomIconSize] = useState("0");
   const cardMediaEl = useRef(null);
@@ -54,8 +56,8 @@ export default function CardMedia(props) {
     >
       <CardMediaMui height={300} ref={cardMediaEl} component="img" {...props} />
       <div
-        onMouseOver={onMouseOver}
-        onMouseOut={onMouseOut}
+        onMouseOver={isMobile ? () => {} : onMouseOver}
+        onMouseOut={isMobile ? () => {} : onMouseOut}
         css={greyOutBgStyles}
       >
         <ZoomInIcon
